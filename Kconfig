@@ -9,7 +9,6 @@ menuconfig LCZ_LWM2M_BLE_SENSOR
 	depends on LCZ_BT_SCAN
 	depends on LCZ_AD_FIND
 	depends on LCZ_SENSOR_ADV_MATCH
-	depends on BT_CTLR_PHY_CODED
 	depends on BT_EXT_ADV
 	select LCZ_SENSOR_EVENT
 

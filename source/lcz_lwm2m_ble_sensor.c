@@ -149,7 +149,6 @@ static int lcz_lwm2m_ble_sensor_init(const struct device *dev)
 		LOG_ERR("Unable to start scanning: %d", r);
 	}
 
-	lbs.agent.type = IPSO_OBJECT_FILLING_LEVEL_SENSOR_ID;
 	lbs.agent.gw_obj_deleted = gw_obj_removed;
 	lcz_lwm2m_util_register_agent(&lbs.agent);
 
@@ -491,6 +490,7 @@ static int gw_obj_removed(int idx, void *context)
 		lbs.table_full = false;
 		lbs.table[idx].product_id = INVALID_PRODUCT_ID;
 	}
+
 	return 0;
 }
 

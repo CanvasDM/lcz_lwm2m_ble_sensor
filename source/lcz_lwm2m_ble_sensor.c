@@ -48,6 +48,11 @@ LOG_MODULE_REGISTER(lwm2m_ble_sensor, CONFIG_LCZ_LWM2M_BLE_SENSOR_LOG_LEVEL);
 #include "lcz_lwm2m_fill_level.h"
 #endif
 
+#if defined(CONFIG_LCZ_LWM2M_BLE_SENSOR_LED)
+#include "lcz_led.h"
+#include "led_config.h"
+#endif
+
 /**************************************************************************************************/
 /* Local Constant, Macro and Type Definitions                                                     */
 /**************************************************************************************************/
@@ -269,6 +274,9 @@ static int ad_filter(const bt_addr_le_t *addr, LczSensorAdEvent_t *p, int8_t rss
 		lbs.table[idx].last_event_id = p->id;
 		lbs.table[idx].last_record_type = p->recordType;
 
+#if defined(CONFIG_LCZ_LWM2M_BLE_SENSOR_LED)
+		lcz_led_blink(BLE_LED, &BLE_ACTIVITY_LED_PATTERN);
+#endif
 		ad_process(idx, p, rssi);
 
 		/* An ad that we care about has been seen; prevent device from being removed from table */

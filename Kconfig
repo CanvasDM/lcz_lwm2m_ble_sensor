@@ -36,4 +36,13 @@ config LCZ_LWM2M_BLE_EVENT_TIMEOUT_SECONDS
 config LCZ_LWM2M_BLE_SENSOR_STATS
 	bool "Increment statistics for use with debugger"
 
+config LCZ_LWM2M_BLE_SENSOR_LED
+	bool "Flash LED for sensor data"
+	depends on LCZ_LED
+	help
+	  The LED will flash after filtering advertisement data for sensors.
+	  A file "led_config.h" defining all LEDs needs to be defined elsewhere.
+	  In led_config.h BLE_LED index and BLE_ACTIVITY_LED_PATTERN need to
+	  be defined to work with lcz_led_blink(...).
+
 endif # LCZ_LWM2M_BLE_SENSOR

@@ -279,9 +279,6 @@ static int ad_filter(const bt_addr_le_t *addr, LczSensorAdEvent_t *p, int8_t rss
 		ad_process(idx, p, rssi);
 
 		/* An ad that we care about has been seen; prevent device from being removed from table */
-		/* todo: or is this too strict?  will a device be configured from cloud and presence (ad)
-		 * of device is enough? does this need to take into allow list ?
-		 */
 		if (lcz_lwm2m_gw_obj_set_lifetime(idx, LIFETIME) != 0) {
 			LOG_ERR("Unable to set lifetime");
 		}

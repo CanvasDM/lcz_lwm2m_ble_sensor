@@ -257,10 +257,8 @@ static int ad_filter(const bt_addr_le_t *addr, LczSensorAdEvent_t *p, int8_t rss
 		}
 		INCR_STAT(indexed_ads);
 
-		/* Filter out duplicate events.
-		 * If both devices have just powered-up, don't filter event 0.
-		 */
-		if ((p->id != 0) && (p->id == lbs.table[idx].last_event_id) &&
+		/* Filter out duplicate events */
+		if ((p->id == lbs.table[idx].last_event_id) &&
 		    (p->recordType == lbs.table[idx].last_record_type)) {
 			break;
 		}
